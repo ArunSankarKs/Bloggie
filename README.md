@@ -1,5 +1,5 @@
 # Bloggie
-This is a simple Blog .
+This is a simple Blog which uses NoSql(MongoDb) Database .
 
 Make sure you have the following python packages :
 
