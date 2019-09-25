@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block content %}
+    <head>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            .card {
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+                max-width: 300px;
+                margin: auto;
+                text-align: center;
+            }
+
+            .title {
+                color: grey;
+                font-size: 18px;
+            }
+        </style>
+    </head>
+    <body>
+    <br>
+    {% if object %}
+        <div class="row">
+            <div class="col-sm-3">
+
+                <div class="card">
+                    <img src="{{ object.profile_pic.url }}" alt="{{ object.user }}" style="width:100%">
+                    <h1>{{ object.user.first_name }}</h1>
+                    <p class="title">{{ object.bio }}</p>
+                    <p>KCT CSE</p>
+                    <div style="margin: 24px 0;">
+                        <a href="#"><i class="fa fa-dribbble"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="jumbotron">
+                    <h1>My work</h1>
+                    <br>
+                    <ul>
+                        {% for forum in object_list %}
+                            <li><a href="{% url 'article-detail' id=forum.id %}"><b>{{ forum.title }}</b></a> | <span
+                                    style="font-size: 20px;"><i>{{ forum.created_at }}</i></span></li><br>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="jumbotron">
+                    <h1>My Intrests</h1>
+                    <br>
+                    <ul>
+                        {% for topic in topic_list %}
+                            <li><b>{{ topic }}</b></li><br>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="login-page">
+            <div class="form">
+                <h4>My profile</h4>
+                <br>
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <br>
+                    <input type="submit" value="Submit" style="background: #3398E1">
+                </form>
+            </div>
+        </div>
+    {% endif %}
+    </body>
+    <script>
+        $('.message a').click(function () {
+            $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+        });</script>
+{% endblock %}

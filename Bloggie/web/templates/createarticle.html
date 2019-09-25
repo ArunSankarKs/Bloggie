@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %} Sign Up{% endblock %}
+
+{% block content %}
+    <div class="login-page">
+        <div class="form">
+            <h4>Article</h4>
+            <br>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_table }}
+                <br>
+                <input type="submit" value="Submit" style="background: #3398E1">
+            </form>
+        </div>
+    </div>
+
+
+    <style>
+
+        body {
+            background: #76b852; /* fallback for old browsers */
+            background: -webkit-linear-gradient(right, #76b852, #8DC26F);
+            background: -moz-linear-gradient(right, #76b852, #8DC26F);
+            background: -o-linear-gradient(right, #76b852, #8DC26F);
+            background: linear-gradient(to left, #76b852, #8DC26F);
+            font-family: "Roboto", sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+    </style>
+    <script>
+        $('.message a').click(function () {
+            $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+        });</script>
+{% endblock %}

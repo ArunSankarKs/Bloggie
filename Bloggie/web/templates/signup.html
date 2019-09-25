@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %} Sign Up{% endblock %}
+{% block content %}
+    <div class="login-page">
+        <div class="form">
+            <h4>Sign Up</h4>
+            <br>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ signupForm.as_table }}
+                <br>
+                <input type="submit" value="Submit" style="background: #3398E1">
+            </form>
+        </div>
+    </div>
+    <script>
+        $('.message a').click(function () {
+            $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+        });</script>
+{% endblock %}

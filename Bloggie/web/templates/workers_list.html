@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if request.user.is_authenticated %}
+    {% if messages %}
+        <div class="card bg-danger text-white">
+            {% for message in messages %}
+                <div class="card-body">Forum was successfully created</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    <div class="jumbotron">
+        <h1>Workers</h1>
+        <ul>
+            {% for forum in object %}
+                <li><a href=""><b>{{ forum.location }}</b></a> | <a
+                        href="">{{ forum.number_of_workers }}</a> |  <a
+                        href="">Know More</a><span
+                        style="font-size: 20px;"><i>{{ forum.created_at }}</i></span></li><br>
+            {% endfor %}
+        </ul>
+    </div>
+    {% else %}
+    <div class="jumbotron">
+        <h1>Please Login To Access the site</h1>
+    </div>
+    {% endif %}
+{% endblock %}

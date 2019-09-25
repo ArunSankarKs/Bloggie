@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if request.user.is_authenticated %}
+    {% if messages %}
+        <div class="card bg-danger text-white">
+            {% for message in messages %}
+                <div class="card-body">Forum was successfully created</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+        <div class="container">
+                <div class="row">
+              <div class="col-md-8 mt-3 left">
+                    {% for post in object %}
+                <div class="card mb-4" >
+                  <div class="card-body">
+                    <h2 class="card-title">{{ post.title }}</h2>
+                    <p class="card-text text-muted h6">{{ post.user }} | {{ post.created_at}} </p>
+                    <p class="card-text">{{post.desc|slice:":200" }}</p>
+                    <a href="{% url 'business-detail' post.id  %}" class="btn btn-primary">Read More &rarr;</a>
+                  </div>
+                </div>
+                {% endfor %}
+            </div>
+    {% else %}
+    <div class="jumbotron">
+        <h1>Please Login To Access the site</h1>
+    </div>
+    {% endif %}
+{% endblock %}

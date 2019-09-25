@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+
+{% block title %} {{ objecr̥t.title }} {% endblock %}
+
+{% block content %}
+    <div class="jumbotron">
+        <h1>{{ object.title }}</h1>
+
+        <p style="font-size: 20px;">{{ object.desc }}</p>
+        - <span><i>{{ object.created_at }}</i></span>
+        <hr>
+        <p style="font-size: 20px;">Comments:</p>
+        <div class="indent">
+            {% for comment in object.comment_set.all %}
+                <p>
+                    <img src="{{ comment.user.profile.profile_pic.url }}" style="width:25px;height:30px;"><span
+                        style="font-size: 20px;"> {{ comment.user|title }}</span> : {{ comment.desc }}
+                </p>
+            {% endfor %}
+
+        </div>
+
+        <div class="form">
+            <form method="post" action="">
+                {% csrf_token %}
+                <tr>
+                    <td><input id="comment" name="comment"
+                               type="text" class="form-control"></td>
+                    <input value="{{ object.id }}" id="article_id" name="article_id" hidden>
+                </tr>
+                <br>
+                <input type="submit" value="Submit"
+                       style="background: #3398E1"/>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
