@@ -20,4 +20,6 @@ now run "python manage.py createsuperuser" (to create a SuperUser to your Page)
 
 finally "python manage.py runserver" to run the server 
 
+Fork this project if you want to contribute.
+
 Good Luck :)
