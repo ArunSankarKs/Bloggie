@@ -80,7 +80,7 @@ DATABASES = {
         'NAME': "MyMongo",
         "USER": "Your username",   #Mongo Username and Password
         "PASSWORD": "Your Password",
-        "HOST": "127.0.0.1", #this is Home Ip/ Your dont have to change it unless you host your DB/Web app on a server
+        "HOST": "127.0.0.1", #this is Your Home Ip/. dont have to change it unless you host your DB/Web app on a server
         "PORT": 27017, #default port of Mongo
     }
 }
